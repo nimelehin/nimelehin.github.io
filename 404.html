@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang = 'ru'>
+    <head>
+
+        <meta charset="utf-8">
+
+        <?php include($_SERVER['DOCUMENT_ROOT'].'/model/components/icons.php'); ?>
+        <title>404</title>
+
+        <!-- Main includes -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link rel='stylesheet' href = '/css/404.css'>
+        <link rel='stylesheet' href = '/css/header.css'>
+        
+
+    </head>
+    <body>
+        <div id = 'circles'>
+                
+        </div>
+        <main>
+            <div class = 'number'>
+                404
+            </div>
+            <div class = 'text'>
+                Page not found
+            </div>
+            <a class = 'button' href = '/'>
+                Home
+            </a>
+        </main>
+        <div class = 'logo-handler'>
+            <div class = 'logo'>Nikita Melekhin</div>
+        </div>
+    </body>
+</html>
+
+<script>
+    jQuery(function($){
+
+        var mouseX = $(window).width(), mouseY = $(window).height();
+
+        function addBall(x, y, size){
+            var w = $(window).width()
+            var h = $(window).height()
+            var new_code = `<div class = 'circle' t = '${y}' l='${x}' style = "display: none; top: ${y+(h-mouseY) * 0.05}px; left: ${x+(w-mouseX)* 0.05}px; width: ${size}px; height: ${size}px;"></div>`
+            $('#circles').append(new_code)
+        }
+
+        function change(x, y){
+            $('.circle').each(function(){
+                var tw = parseFloat($(this).attr('t'))
+                var lw = parseFloat($(this).attr('l'))
+                $(this).css('top', tw+y)
+                $(this).css('left', lw+x)
+            })
+        }
+
+        function getRandomArbitrary(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        var was = []
+
+        function spawn(w, h){
+            var s = getRandomArbitrary(20, 110)
+            var x = -1
+            var y = -1
+            while (true){
+                var x = getRandomArbitrary(1, w - s / 2)
+                var y = getRandomArbitrary(1, h - s / 2)
+                if (!(was.includes([x/100, y/100]))) {
+                    was.push([x/100, y/100])
+                    break
+                }
+            }
+            addBall(x, y, s)
+        }
+
+        var ignoreTouches = false
+
+        
+
+        function init() {
+            if (window.DeviceMotionEvent) {
+                window.addEventListener("deviceorientation", deviceMotionHandler);
+                ignoreTouches = true
+            }
+
+            var w = $(window).width()
+            var h = $(window).height()
+            var n = getRandomArbitrary(4, 6)
+            for (var i = 0; i < n; i++){
+                spawn(w, h)
+            }
+            $('.circle').show()
+        }
+
+        init()
+
+        var initB = -1000
+        var initG = -1000
+
+        var prevG = 0
+        var fstLoad = true
+
+        function deviceMotionHandler(event){
+            var beta     = event.beta;
+            var gamma    = event.gamma;
+            var s = 1
+            if (beta >  90) { beta =  90};
+            if (beta < -90) { beta = -90};
+            change((gamma) * 0.4, ( beta) * 0.4)
+        }
+
+        $(document).on("click", ".circle", function() {
+            var w = $(window).width()
+            var h = $(window).height()
+            $(this).fadeOut(300)
+            $(this).remove();
+            setTimeout(function() { $(this).remove(); }, 400);
+            setTimeout(function() { spawn(w, h); $('.circle').fadeIn(300)}, 550);
+        });
+
+        $('body').mousemove(function(event) {
+            if (ignoreTouches) {
+                return
+            }
+            
+            var w = $(window).width()
+            var h = $(window).height()
+            change((w - event.pageX) * 0.05, (h - event.pageY) * 0.05)
+            mouseX = event.pageX
+            mouseY = event.pageY
+        });
+        
+    })
+</script>

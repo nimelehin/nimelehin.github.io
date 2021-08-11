@@ -4,12 +4,13 @@
 
         <meta charset="utf-8">
 
-        <title>Nikita Melekhin</title>
+        <?php include($_SERVER['DOCUMENT_ROOT'].'/model/components/icons.php'); ?>
+        <title>Projects</title>
 
         <!-- Main includes -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700,900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -18,78 +19,32 @@
 
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
         <link rel='stylesheet' href = '/css/header.css'>
-        <link rel='stylesheet' href = '/css/main.css'>
+            <link rel='stylesheet' href = '/css/page.css'>
+        
     </head>
     <body>
-        <div class = 'full_size d-none d-md-block'>
-            <div class = 'landing_handler'>
-                <div class = 'left'>
-                    <div class = 'email_handler'><a class = 'email' href="mailto:nimelehin@gmail.com">nimelehin@gmail.com</a></div>
-                    <div>
-                        <div class = 'sbn_handler invisible'><div>Software</div><div>ENGINEER</div></div>
-                        <div class = 'logo_handler'><div>Nikita</div><div>Melekhin</div></div>
-                        <div class = 'sbn_handler'><div>Software</div><div>ENGINEER</div></div>
-                    </div>
-                    <div class = 'sn_handler'>
-                        <a href = "https://github.com/nimelehin" class="icon fab fa-github"></a>
-                        <a href = "http://linkedin.com/in/nikita-melekhin-b355b5182/" class="icon fab fa-linkedin-in"></a>
-                        <a href = "" class="icon fab fa-twitter"></a>
-                    </div>
-                </div>
-                <div class = 'right'>
-                    <div class = 'menu'>
-                        <a href = '/projects.html' class = 'menu_item' item = 'lesson'>Projects</a>
-                        <a href = '/blog.html' class = 'menu_item' item = 'blog'>BLOG</a>
-                        <a href = '/about.html' class = 'menu_item' item = 'about'>ABOUT ME</a>
-                        <a href = '/resume.html' class = 'menu_item' item = 'resume'>RESUME</a>
-                    </div>
-
-                    <!-- <div class = 'mini_info'>
-                        <div class = 'mini_info_line'>
-                            <div class = 'left_item'>Work Experience:</div>
-                            <div class = 'right_item'></div>
-                        </div>
-                        <div class = 'mini_info_line'>
-                            <div class = 'left_item'>Top Projects:</div>
-                            <div class = 'right_item'><div>oneOS</div><div>oneCC</div></div>
-                        </div>
-                    </div> -->
-                </div>
-            </div>
-        </div>
-        <div class = 'full_size d-md-none'>
-            <div class = 'landing_handler_mobile'>
-                <div class = 'top'> 
-                    <div>
-                        <div class = 'logo_handler'><div>Nikita</div><div>Melekhin</div></div>
-                        <div class = 'sbn_handler'><div>Software</div><div>ENGINEER</div></div>
-                    </div>
-                </div>
-                <div class = 'bottom'> 
-                    <div class = 'container'>
-                        <div class = 'menu'>
-                            <a href = '/projects.html' id = 'menu_item4' class = 'menu_item' item = 'lesson'>Projects</a>
-                            <a href = '/blog.html' id = 'menu_item3' class = 'menu_item' item = 'blog'>BLOG</a>
-                            <a href = '/about.html' id = 'menu_item2' class = 'menu_item' item = 'raiting'>ABOUT ME</a>
-                            <a href = '/resume.html' id = 'menu_item1' class = 'menu_item' item = 'raiting'>RESUME</a>
-                        </div>
-                        <div class = 'icon_handler'>
-                            <a href = "https://github.com/nimelehin" class="icon fab fa-github"></a>
-                            <a href = "http://linkedin.com/in/nikita-melekhin-b355b5182/" class="icon fab fa-linkedin-in"></a>
-                            <a href = "" class="icon fab fa-twitter"></a>
-                            <a href = "mailto:nimelehin@gmail.com" class="icon fas fa-envelope"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <header>
+        </header>
+        <main class = 'container'>
+            <h1 class = 'page_title'>About me</h1>
+            <h2 class = 'page_subtitle'>Hi! Nice to see you here! 👋</h2>
+            <p>Hi! I'm Nikita Melekhin and I’m a software engineer.</p>
+            <h2 class = 'page_subtitle'>Contacts 📝</h2>
+            <p>Got a question? <a href='mailto:nimelehin@gmail.com'>Email</a> is a preferable way to get ahold of me. I'm also available in other social networks.</p>
+            <ul>
+                <li><a href='https://github.com/nimelehin'>nimelehin @ Github</a></li>
+                <li><a href='http://linkedin.com/in/nikita-melekhin-b355b5182/'>Nikita Melekhin @ LinkedIn</a></li>
+            </ul>
+        </main>
         <div class = 'notification' id = 'notification'></div>
     </body>
+    <footer>
+    </footer>
 </html>
 
 <script>
     jQuery(function($){
-        var current_page = 'main'
+        var current_page = 'projects'
 
         var isOpened = false
 var username = "none"
